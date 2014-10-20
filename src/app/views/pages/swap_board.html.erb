@@ -1,0 +1,52 @@
+<%= render 'layouts/header' %>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Swap Board</h1>
+    <br />
+    <h3 class="text-center">Available Swaps</h3>
+    <table class="table table-condensed" id="available-swaps-table">
+      <thead>
+        <tr>
+          <th>Owner</th>
+          <th>Shift Date</th>
+          <th>Shift Times</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @swaps.each do |s| %>
+          <% unless s.taker %>
+            <tr>
+              <td><%= s.owner.full_name %></td>
+              <td><%= s.shift.pretty_date %></td>
+              <td><%= s.shift.pretty_time%></td>
+              <td><%= link_to "Take", swap_board_path, class: "btn btn-default btn-xs" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <h3 class="text-center">Pending Swaps</h3>
+    <table class="table table-condensed" id="pending-swaps-table">
+      <thead>
+        <tr>
+          <th>Owner</th>
+          <th>Shift Date</th>
+          <th>Shift Times</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @swaps.each do |s| %>
+          <% if s.taker %>
+            <tr>
+              <td><%= s.owner.full_name %></td>
+              <td><%= s.shift.pretty_date %></td>
+              <td><%= s.shift.pretty_time%></td>
+              <td><%= link_to "Take", swap_board_path, class: "btn btn-default btn-xs" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
