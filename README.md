@@ -3,7 +3,7 @@
 ##Setting Up lateStarter
 1. pull from lateStarters github repo
 2. `$ cd lateStarters/`
-3. `$ rake db:create db:migrate`
+3. `$ rake db:create db:migrate db:fixtures:load RAILS_ENV=development`
 
 ##Languages and Dependencies
 * HTML 5
