@@ -2,18 +2,15 @@
 
 one:
   id: 1
-  owner_id: 519
   taker_id: 2
   shift_id: 1
 
 two:
   id: 2
-  owner_id: 519
   taker_id:
   shift_id: 2
 
 three:
   id: 3
-  owner_id: 519
   taker_id:
   shift_id: 3

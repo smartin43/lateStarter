@@ -24,14 +24,12 @@ ActiveRecord::Schema.define(version: 20141018002009) do
   add_index "shifts", ["user_id"], name: "index_shifts_on_user_id"
 
   create_table "swaps", force: true do |t|
-    t.integer  "owner_id"
     t.integer  "taker_id"
     t.integer  "shift_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "swaps", ["owner_id"], name: "index_swaps_on_owner_id"
   add_index "swaps", ["shift_id"], name: "index_swaps_on_shift_id"
   add_index "swaps", ["taker_id"], name: "index_swaps_on_taker_id"
 

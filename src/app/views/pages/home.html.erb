@@ -19,9 +19,9 @@
             <td>
               <% case shift.swap_status %>
                 <% when "up" %>
-                  <%= button_to "Take Down", remove_swap_path(shift.swap), class: "btn btn-default btn-xs" %>
+                  <%= button_to "Take Down", remove_swap_path(shift.swap), class: "btn btn-default btn-sm" %>
                 <% when "down" %>
-                  <%= button_to "Put Up", add_swap_path(shift), class: "btn btn-default btn-xs" %>
+                  <%= button_to "Put Up", add_swap_path(shift), class: "btn btn-default btn-sm" %>
                 <% when "pending" %>
                   pending...
                 <% else %>

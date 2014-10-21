@@ -68,7 +68,7 @@ class SwapsController < ApplicationController
     swap = Swap.find(params[:format])
     swap.taker = @user
     swap.save
-    redirect_to(swap_board_path)
+    redirect_to :back
   end
   def confirm_swap
     swap = Swap.find(params[:format])
@@ -76,25 +76,24 @@ class SwapsController < ApplicationController
     shift.user = swap.taker
     shift.save
     swap.destroy
-    redirect_to(swap_board_path)
+    redirect_to :back
   end
   def deny_swap
     swap = Swap.find(params[:format])
     swap.destroy
-    redirect_to(swap_board_path)
+    redirect_to :back
   end
   def add_swap
     shift = Shift.find(params[:format])
     swap = Swap.new
-    swap.owner = shift.user
     swap.shift = shift
     swap.save
-    redirect_to(home_path)
+    redirect_to :back
   end
   def remove_swap
     swap = Swap.find(params[:format])
     swap.destroy
-    redirect_to(home_path)
+    redirect_to :back
   end
   def check_for_user
     if !session[:user_id]

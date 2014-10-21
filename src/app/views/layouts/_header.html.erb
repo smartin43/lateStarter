@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container-fluid">
     <%= link_to @user.full_name, home_path, class: "navbar-brand" %>
     <div class="dropdown navbar-right">
-      <button class="btn btn-default" data-toggle="dropdown" >navigation</button>
+      <button class="btn navbar-btn" data-toggle="dropdown">NAV</button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
         <li><%= link_to "Home", home_path %></li>
         <li><%= link_to "SwapBoard", swap_board_path %></li>
