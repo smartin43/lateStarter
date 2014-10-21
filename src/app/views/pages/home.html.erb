@@ -1,7 +1,8 @@
 <%= render 'layouts/header' %>
 <div class="container">
+  <h1 class="text-center">Weekly Schedule</h1>
+  <br />
   <div class="jumbotron">
-    <h1 class="text-center">Weekly Schedule</h1>
     <table class="table">
       <thead>
         <tr>
@@ -11,16 +12,16 @@
         </tr>
       </thead>
       <tbody>
-        <% @shifts.each do |s| %>
+        <% @shifts.each do |shift| %>
           <tr>
-            <td><%= s.pretty_date %></td>
-            <td><%= s.pretty_time %></td>
+            <td><%= shift.pretty_date %></td>
+            <td><%= shift.pretty_time %></td>
             <td>
-              <% case s.swap_status %>
+              <% case shift.swap_status %>
                 <% when "up" %>
-                  <%= link_to "Take Down", "#", class: "btn btn-default btn-xs" %>
+                  <%= button_to "Take Down", remove_swap_path(shift.swap), class: "btn btn-default btn-xs" %>
                 <% when "down" %>
-                  <%= link_to "Put Up", "#", class: "btn btn-default btn-xs" %>
+                  <%= button_to "Put Up", add_swap_path(shift), class: "btn btn-default btn-xs" %>
                 <% when "pending" %>
                   pending...
                 <% else %>

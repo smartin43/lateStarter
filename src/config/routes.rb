@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   get 'swap_board'      => 'pages#swap_board'
   get 'master_schedule' => 'pages#master_schedule'
 
+  post 'take_shift' => 'swaps#take_shift'
+  post 'confirm_swap' => 'swaps#confirm_swap'
+  post 'deny_swap' => 'swaps#deny_swap'
+  post 'add_swap' => 'swaps#add_swap'
+  post 'remove_swap' => 'swaps#remove_swap'
+
   resources :users
   resources :shifts
   resources :swaps

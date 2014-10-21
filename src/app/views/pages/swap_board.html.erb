@@ -1,48 +1,56 @@
 <%= render 'layouts/header' %>
 <div class="container">
+  <h1 class="text-center">Swap Board</h1>
+  <h2 class="text-center">Available Swaps</h2>
   <div class="jumbotron">
-    <h1 class="text-center">Swap Board</h1>
-    <br />
-    <h3 class="text-center">Available Swaps</h3>
     <table class="table table-condensed" id="available-swaps-table">
       <thead>
         <tr>
           <th>Owner</th>
           <th>Shift Date</th>
           <th>Shift Times</th>
+          <th>Options</th>
         </tr>
       </thead>
       <tbody>
-        <% @swaps.each do |s| %>
-          <% unless s.taker %>
+        <% @swaps.each do |swap| %>
+          <% unless swap.taker %>
             <tr>
-              <td><%= s.owner.full_name %></td>
-              <td><%= s.shift.pretty_date %></td>
-              <td><%= s.shift.pretty_time%></td>
-              <td><%= link_to "Take", swap_board_path, class: "btn btn-default btn-xs" %></td>
+              <td><%= swap.owner.full_name %></td>
+              <td><%= swap.shift.pretty_date %></td>
+              <td><%= swap.shift.pretty_time%></td>
+              <% if swap.owner = @user %>
+                <td><%= button_to "Take", take_shift_path(swap), class: "btn btn-default btn-xs" %></td>
+              <% else %>
+                <td>Your Shift</td>
+              <% end %>
             </tr>
           <% end %>
         <% end %>
       </tbody>
     </table>
-
-    <h3 class="text-center">Pending Swaps</h3>
+  </div>
+  <h2 class="text-center">Pending Swaps</h2>
+  <div class="jumbotron">
     <table class="table table-condensed" id="pending-swaps-table">
       <thead>
         <tr>
           <th>Owner</th>
+          <th>Taker</th>
           <th>Shift Date</th>
           <th>Shift Times</th>
+          <th>Confirmation</th>
         </tr>
       </thead>
       <tbody>
-        <% @swaps.each do |s| %>
-          <% if s.taker %>
+        <% @swaps.each do |swap| %>
+          <% if swap.taker %>
             <tr>
-              <td><%= s.owner.full_name %></td>
-              <td><%= s.shift.pretty_date %></td>
-              <td><%= s.shift.pretty_time%></td>
-              <td><%= link_to "Take", swap_board_path, class: "btn btn-default btn-xs" %></td>
+              <td><%= swap.owner.full_name %></td>
+              <td><%= swap.taker.full_name %></td>
+              <td><%= swap.shift.pretty_date %></td>
+              <td><%= swap.shift.pretty_time%></td>
+              <td><%= button_to "Confirm", confirm_swap_path(swap), class: "btn btn-default btn-xs" %> <%= button_to "Deny", deny_swap_path(swap), class: "btn btn-default btn-xs" %></td>
             </tr>
           <% end %>
         <% end %>

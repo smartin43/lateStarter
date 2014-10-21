@@ -1,6 +1,23 @@
 <%= render 'layouts/header' %>
 <div class="container">
+  <h1 class="text-center">Master Schedule</h1>
+  <br />
   <div class="jumbotron">
-    <h1 class="text-center">Master Schedule</h1>
+    <table class="table">
+      <thead>
+        <th>Employee</th>
+        <th>Date</th>
+        <th>Time</th>
+      </thead>
+      <tbody>
+        <% @shifts.each do |shift| %>
+          <tr>
+            <td><%= shift.user.full_name %></td>
+            <td><%= shift.pretty_date %></td>
+            <td><%= shift.pretty_time %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
