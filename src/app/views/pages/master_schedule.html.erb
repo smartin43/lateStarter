@@ -22,7 +22,42 @@
               <% if Date.parse(shift.start_time).monday? %>
                 <td><%= shift.pretty_time %></td>
               <% end %>
+              <% if Date.parse(shift.start_time).tuesday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
+              <% if Date.parse(shift.start_time).wednesday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
+              <% if Date.parse(shift.start_time).thursday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
+              <% if Date.parse(shift.start_time).friday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
+              <% if Date.parse(shift.start_time).saturday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
+              <% if Date.parse(shift.start_time).sunday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
             <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />
+    <table class="table">
+      <thead>
+        <th>Employee</th>
+        <th>Date</th>
+        <th>Time</th>
+      <thead>
+      <tbody>
+        <% @shifts.each do |shift| %>
+          <tr>
+            <td><%= shift.user.full_name %></td>
+            <td><%= shift.pretty_date %></td>
+            <td><%= shift.pretty_time %></td>
           </tr>
         <% end %>
       </tbody>
