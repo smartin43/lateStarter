@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def master_schedule
     @shifts = Shift.all
+    @users = User.all
   end
 
   def edit

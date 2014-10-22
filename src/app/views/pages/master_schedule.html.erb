@@ -6,15 +6,23 @@
     <table class="table">
       <thead>
         <th>Employee</th>
-        <th>Date</th>
-        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
       </thead>
       <tbody>
-        <% @shifts.each do |shift| %>
+        <% @users.each do |user| %>
           <tr>
-            <td><%= shift.user.full_name %></td>
-            <td><%= shift.pretty_date %></td>
-            <td><%= shift.pretty_time %></td>
+            <td><%= user.full_name %></td>
+            <% user.week_shifts.each do |shift| %>
+              <% if Date.parse(shift.start_time).monday? %>
+                <td><%= shift.pretty_time %></td>
+              <% end %>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
