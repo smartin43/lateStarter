@@ -1,12 +1,16 @@
 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container-fluid">
-    <%= link_to @user.full_name, home_path, class: "navbar-brand" %>
+    <%= link_to "lateStarter", home_path, class: "navbar-brand" %>
     <div class="dropdown navbar-right">
       <button class="btn navbar-btn" data-toggle="dropdown">NAV</button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
         <li><%= link_to "Home", home_path %></li>
         <li><%= link_to "SwapBoard", swap_board_path %></li>
         <li><%= link_to "MasterSchedule", master_schedule_path %></li>
+        <% if @user.access == 1 %>
+          <li class="divider"></li>
+          <li><%= link_to "CreateUser", root_path %></li>
+        <% end %>
         <li class="divider"></li>
         <li><%= link_to "EditProfile", edit_path %></li>
         <li><%= link_to "LogOut", logout_path %></li>

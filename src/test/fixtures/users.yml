@@ -5,15 +5,18 @@ one:
   first_name: Spencer
   last_name: McWilliams
   password_digest: $2a$10$HUEh28qSVwTBlsi34HWqe.ZeUVntiMyAX1F7P7gtFBXwIRIhJux8i
+  access: 1
 
 two:
   id: 2
   first_name: John
   last_name: Doe
   password_digest: $2a$10$HUEh28qSVwTBlsi34HWqe.ZeUVntiMyAX1F7P7gtFBXwIRIhJux8i
+  access: 2
 
 three:
   id: 3
   first_name: Jane
   last_name: Doe
   password_digest: $2a$10$HUEh28qSVwTBlsi34HWqe.ZeUVntiMyAX1F7P7gtFBXwIRIhJux8i
+  access: 2

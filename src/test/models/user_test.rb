@@ -5,6 +5,7 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(first_name: "Spencer",
                       last_name: "McWilliams",
                        password: "foo",
+                         access: 1,
                 password_digest: "foo")
   end
 
