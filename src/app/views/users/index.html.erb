@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Options</th>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.full_name %></td>
+          <td><%= u.id %></td>
+          <td><%= button_to "Delete", '#' %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

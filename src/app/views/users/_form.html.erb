@@ -1,0 +1,32 @@
+<div class="form-group">
+  <%= form_for(@user) do |f| %>
+    <div class="input-group">
+      <div class="input-group-addon"><%= f.label :first_name, class: "form-label" %></div>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+    <br />
+    <div class="input-group">
+      <div class="input-group-addon"><%= f.label :last_name, class: "form-label" %></div>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+    <br />
+    <div class="input-group">
+      <div class="input-group-addon"><%= f.label :password, class: "form-label" %></div>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <br />
+    <div class="input-group">
+      <div class="input-group-addon"><%= f.label :password_confirmation, class: "form-label"%></div>
+      <%= f.password_field :password_confirmation, class: "form-control"%>
+    </div>
+    <br />
+    <% if @cur_user.access == 1 %>
+      <div class="input-group">
+        <div class="input-group-addon"><%= f.label :access, class: "form-label" %></div>
+        <%= f.number_field :access, class: "form-control"%>
+      </div>
+      <br />
+    <% end %>
+    <%= f.submit class: "btn btn-primary btn-sm" %>
+  <% end %>
+</div>
