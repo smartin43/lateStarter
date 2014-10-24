@@ -30,30 +30,32 @@
     </tbody>
   </table>
 </div>
+<% if @cur_user.access == 1 %>
 <h2 class="text-center">Pending Swaps</h2>
-<div class="jumbotron">
-  <table class="table table-condensed" id="pending-swaps-table">
-    <thead>
-      <tr>
-        <th>Owner</th>
-        <th>Taker</th>
-        <th>Shift Date</th>
-        <th>Shift Times</th>
-        <th>Confirmation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @swaps.each do |swap| %>
-        <% if swap.taker %>
-          <tr>
-            <td><%= swap.shift.user.full_name %></td>
-            <td><%= swap.taker.full_name %></td>
-            <td><%= swap.shift.pretty_date %></td>
-            <td><%= swap.shift.pretty_time%></td>
-            <td><%= button_to "Confirm", confirm_swap_path(swap), class: "btn btn-default btn-sm" %> <%= button_to "Deny", deny_swap_path(swap), class: "btn btn-default btn-sm" %></td>
-          </tr>
+  <div class="jumbotron">
+    <table class="table table-condensed" id="pending-swaps-table">
+      <thead>
+        <tr>
+          <th>Owner</th>
+          <th>Taker</th>
+          <th>Shift Date</th>
+          <th>Shift Times</th>
+          <th>Confirmation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @swaps.each do |swap| %>
+          <% if swap.taker %>
+            <tr>
+              <td><%= swap.shift.user.full_name %></td>
+              <td><%= swap.taker.full_name %></td>
+              <td><%= swap.shift.pretty_date %></td>
+              <td><%= swap.shift.pretty_time%></td>
+              <td><%= button_to "Confirm", confirm_swap_path(swap), class: "btn btn-default btn-sm" %> <%= button_to "Deny", deny_swap_path(swap), class: "btn btn-default btn-sm" %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
+<% end %>
