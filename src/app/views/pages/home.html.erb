@@ -1,35 +1,33 @@
-<div class="container">
-  <h1 class="text-center">Weekly Schedule</h1>
-  <br />
-  <div class="jumbotron">
-    <table class="table">
-      <thead>
+<h1 class="text-center">Weekly Schedule</h1>
+<br />
+<div class="jumbotron">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Swap Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shifts.each do |shift| %>
         <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Swap Status</th>
+          <td><%= shift.pretty_date %></td>
+          <td><%= shift.pretty_time %></td>
+          <td>
+            <% case shift.swap_status %>
+              <% when "up" %>
+                <%= button_to "Take Down", remove_swap_path(shift.swap), class: "btn btn-default btn-sm" %>
+              <% when "down" %>
+                <%= button_to "Put Up", add_swap_path(shift), class: "btn btn-default btn-sm" %>
+              <% when "pending" %>
+                pending...
+              <% else %>
+                <p>error!</p>
+            <% end %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @shifts.each do |shift| %>
-          <tr>
-            <td><%= shift.pretty_date %></td>
-            <td><%= shift.pretty_time %></td>
-            <td>
-              <% case shift.swap_status %>
-                <% when "up" %>
-                  <%= button_to "Take Down", remove_swap_path(shift.swap), class: "btn btn-default btn-sm" %>
-                <% when "down" %>
-                  <%= button_to "Put Up", add_swap_path(shift), class: "btn btn-default btn-sm" %>
-                <% when "pending" %>
-                  pending...
-                <% else %>
-                  <p>error!</p>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
 </div>

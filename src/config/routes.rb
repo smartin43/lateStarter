@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-
   root 'pages#home'
+
+  resources :swaps
+  resources :users
 
   get 'login'     => 'logins#login'
   get 'logout'    => 'logins#logout'
   get 'try_login' => 'logins#try_login'
 
-  get 'edit' => 'pages#edit'
   get 'home' => 'pages#home'
   get 'swap_board'      => 'pages#swap_board'
   get 'master_schedule' => 'pages#master_schedule'
@@ -17,8 +18,6 @@ Rails.application.routes.draw do
   post 'add_swap' => 'swaps#add_swap'
   post 'remove_swap' => 'swaps#remove_swap'
 
-  resources :swaps
-  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
