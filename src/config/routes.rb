@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :swaps
   resources :users
+  resources :shifts
 
   get 'login'     => 'logins#login'
   get 'logout'    => 'logins#logout'

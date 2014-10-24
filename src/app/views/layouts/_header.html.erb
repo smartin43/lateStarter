@@ -7,9 +7,11 @@
         <li><%= link_to "Home", home_path %></li>
         <li><%= link_to "SwapBoard", swap_board_path %></li>
         <li><%= link_to "MasterSchedule", master_schedule_path %></li>
+        <li><%= link_to "AllUsers", users_path %></li>
         <% if @cur_user.access == 1 %>
           <li class="divider"></li>
           <li><%= link_to "CreateUser", new_user_path %></li>
+          <li><%= link_to "CreateShift", new_shift_path %></li>
         <% end %>
         <li class="divider"></li>
         <li><%= link_to "EditProfile", edit_user_path(@cur_user.id)%></li>

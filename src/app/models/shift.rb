@@ -4,7 +4,7 @@ class Shift < ActiveRecord::Base
   has_one :swap
 
   def start_before_end?
-    :start_time.to_i < :end_time.to_i
+    DateTime.parse(:start_time.to_s) <==> DateTime.parse(:end_time.to_s)
   end
 
   def swap_status
