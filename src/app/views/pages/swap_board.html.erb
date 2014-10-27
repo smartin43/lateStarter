@@ -18,7 +18,7 @@
             <td><%= swap.shift.pretty_date %></td>
             <td><%= swap.shift.pretty_time%></td>
             <td>
-            <% if swap.shift.user == @cur_user %>
+            <% if swap.shift.user == @user %>
               <%= button_to "Take Down", remove_swap_path(swap), class: "btn btn-default btn-sm" %>
             <% else %>
               <%= button_to "Take", take_shift_path(swap), class: "btn btn-default btn-sm" %>
@@ -30,7 +30,7 @@
     </tbody>
   </table>
 </div>
-<% if @cur_user.access == 1 %>
+<% if @user.access == 1 %>
 <h2 class="text-center">Pending Swaps</h2>
   <div class="jumbotron">
     <table class="table table-condensed" id="pending-swaps-table">

@@ -11,7 +11,10 @@
           <td><%= u.full_name %></td>
           <td><%= u.id %></td>
           <% if @user.access == 1 and @user != u %>
-            <td><%= button_to "Delete", u, method: :delete, class: "btn btn-default btn-sm" %>
+            <td>
+              <%= button_to "Delete", u, method: :delete, class: "btn btn-default btn-sm" %>
+              <%= button_to "Edit", edit_user_path(u), method: :get, class: "btn btn-default btn-sm" %>
+            </td>
           <% end %>
         </tr>
       <% end %>
