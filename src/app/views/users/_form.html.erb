@@ -13,7 +13,7 @@
     <%= f.password_field :password_confirmation, class: "form-control"%>
     <br />
     <% #only allow editing of user %>
-    <% if @cur_user.access == 1 %>
+    <% if @user.access == 1 %>
       <%= f.label :access, class: "form-label" %>
       <%= f.number_field :access, class: "form-control"%>
       <br />

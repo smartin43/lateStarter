@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :check_for_user
 
   def home
-    @shifts = @cur_user.shifts
+    @shifts = @user.shifts
   end
 
   def master_schedule

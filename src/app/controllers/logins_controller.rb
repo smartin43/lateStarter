@@ -6,12 +6,10 @@ class LoginsController < ApplicationController
   end
 
   def try_login
-    #unless User.exists?(params[:user_id])
     unless User.exists?(:username => params[:username])
       redirect_to(login_path) 
       return
     end
-    #@user = User.find(params[:user_id]).authenticate(params[:password])
     @user = User.where(:username => params[:username]).first.authenticate(params[:password])
     if @user
       session[:user_id] = @user.id

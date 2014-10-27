@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if !session[:user_id]
       redirect_to(login_path)
     else
-      @cur_user = User.find(session[:user_id])
+      @user = User.find(session[:user_id])
     end
   end
 end

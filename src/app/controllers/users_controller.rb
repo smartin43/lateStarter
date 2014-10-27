@@ -9,15 +9,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = @cur_user
   end
 
   def new
     @user = User.new
   end
 
-  def delete
-    @user.destroy
+  def destroy
+    @tmp_user = User.find(params[:id])
+    if @tmp_user.destroy
+      flash[:message] = "User was destroyed"
+    end
+    redirect_to users_path
   end
 
   def create
@@ -30,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @cur_user.update(user_params)
+    if @user.update(user_params)
       redirect_to(root_path)
     else
       render 'edit'

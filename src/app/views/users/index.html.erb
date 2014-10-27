@@ -10,7 +10,9 @@
         <tr>
           <td><%= u.full_name %></td>
           <td><%= u.id %></td>
-          <td><%= button_to "Delete", '#', class: "btn btn-default btn-sm" %>
+          <% if @user.access == 1 and @user != u %>
+            <td><%= button_to "Delete", u, method: :delete, class: "btn btn-default btn-sm" %>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
