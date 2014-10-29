@@ -23,4 +23,9 @@ class UserTest < ActiveSupport::TestCase
   test "should get full_name" do
     assert_equal("Spencer McWilliams", @user.full_name, "did not provide full_name")
   end
+
+  test "should not save user with invalid access" do
+    @user.access = 3
+    assert_not @user.save, "saved user with invalid access level"
+  end
 end
