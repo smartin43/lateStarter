@@ -1,3 +1,7 @@
+<script type="text/javascript">
+  $(function () { $('#datetimepicker1').datetimepicker(); });
+  $(function () { $('#datetimepicker2').datetimepicker(); });
+</script>
 <div class="form">
   <%= form_for(@shift) do |f| %>
     <%= f.label :user_id, class:"form-label" %>
@@ -6,11 +10,11 @@
     <br />
     <%= f.label :start_time, class:"form-label" %>
     <br />
-    <%= f.datetime_field :start_time, class:"form-control" %>
+    <%= f.text_field :start_time, class:"form-control", id:"datetimepicker1" %>
     <br />
     <%= f.label :end_time, class:"form-label" %>
     <br />
-    <%= f.datetime_field :end_time, class:"form-control" %>
+    <%= f.text_field :end_time, class:"form-control", id:"datetimepicker2" %>
     <br />
     <%= f.submit class:"btn btn-primary" %>
   <% end %>
