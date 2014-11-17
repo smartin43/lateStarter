@@ -3,7 +3,7 @@
 ##Setting Up lateStarter
 1. pull from lateStarters github repo
 2. `$ cd lateStarters/src/`
-3. `$ rake db:seed`
+3. `$ rake db:create db:migrate db:seed`
 
 ##Languages and Dependencies
 * HTML 5

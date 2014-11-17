@@ -1,7 +1,16 @@
 <script type="text/javascript">
-  $(function () { $('#datetimepicker1').datetimepicker(); });
-  $(function () { $('#datetimepicker2').datetimepicker(); });
+  $(function () {
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker2').datetimepicker();
+    $("#datetimepicker1").on("dp.change",function (e) {
+      $('#datetimepicker2').data("DateTimePicker").setMinDate(e.date);
+    });
+    $("#datetimepicker2").on("dp.change",function (e) {
+      $('#datetimepicker1').data("DateTimePicker").setMaxDate(e.date);
+    });
+  });
 </script>
+
 <div class="form">
   <%= form_for(@shift) do |f| %>
     <%= f.label :user_id, class:"form-label" %>
@@ -10,11 +19,16 @@
     <br />
     <%= f.label :start_time, class:"form-label" %>
     <br />
-    <%= f.text_field :start_time, class:"form-control", id:"datetimepicker1" %>
+    <div class='input-group date' id='datetimepicker1'>
+      <%= f.text_field :start_time, class:"form-control" %>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+    </div>
     <br />
     <%= f.label :end_time, class:"form-label" %>
-    <br />
-    <%= f.text_field :end_time, class:"form-control", id:"datetimepicker2" %>
+    <div class='input-group date' id='datetimepicker2'>
+      <%= f.text_field :end_time, class:"form-control" %>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+    </div>
     <br />
     <%= f.submit class:"btn btn-primary" %>
   <% end %>

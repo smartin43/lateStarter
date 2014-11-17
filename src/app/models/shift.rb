@@ -1,5 +1,5 @@
 class Shift < ActiveRecord::Base
-  validates :start_time, :end_time, presence: true
+  validates :start_time, :end_time, :user, presence: true
   belongs_to :user
   has_one :swap
 

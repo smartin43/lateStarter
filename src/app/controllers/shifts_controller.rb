@@ -10,6 +10,7 @@ class ShiftsController < ApplicationController
   end
 
   def create
+    @users = User.all
     @shift = Shift.new(shift_params)
     if @shift.save
       redirect_to master_schedule_path
