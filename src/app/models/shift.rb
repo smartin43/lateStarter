@@ -20,15 +20,15 @@ class Shift < ActiveRecord::Base
   end
 
   def pretty_time
-    s_time = DateTime.strptime(self.start_time, "%Y-%m-%d %H:%M")
+    s_time = DateTime.strptime(self.start_time, "%m/%d/%Y %H:%M %p")
     s_time = s_time.strftime("%l:%M %P")
-    e_time = DateTime.strptime(self.end_time, "%Y-%m-%d %H:%M")
+    e_time = DateTime.strptime(self.end_time, "%m/%d/%Y %H:%M %p")
     e_time = e_time.strftime("%l:%M %P")
     s_time + " - " + e_time
   end
 
   def pretty_date
-    date = DateTime.strptime(self.start_time, "%Y-%m-%d %H:%M")
+    date = DateTime.strptime(self.start_time, "%m/%d/%Y %H:%M %p")
     date = date.strftime("%A, %B %e")
     date
   end
