@@ -4,40 +4,20 @@
   <table class="table">
     <thead>
       <th>Employee</th>
-      <th>Monday</th>
+      <th>[<%=Date.today.beginning_of_week%>]<br/>Monday</th>
       <th>Tuesday</th>
       <th>Wednesday</th>
       <th>Thursday</th>
       <th>Friday</th>
       <th>Saturday</th>
-      <th>Sunday</th>
+      <th>[<%=Date.today.end_of_week%>]<br/>Sunday</th>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
           <td><%= user.full_name %></td>
-          <% user.week_shifts.each do |shift| %>
-            <% if Date.parse(shift.start_time).monday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
-            <% if Date.parse(shift.start_time).tuesday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
-            <% if Date.parse(shift.start_time).wednesday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
-            <% if Date.parse(shift.start_time).thursday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
-            <% if Date.parse(shift.start_time).friday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
-            <% if Date.parse(shift.start_time).saturday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
-            <% if Date.parse(shift.start_time).sunday? %>
-              <td><%= shift.pretty_time %></td>
-            <% end %>
+          <% user.week_shifts.each do |time| %>
+            <td><%= time %></td>
           <% end %>
         </tr>
       <% end %>
@@ -49,6 +29,7 @@
       <th>Employee</th>
       <th>Date</th>
       <th>Time</th>
+      <th>Options</th>
     <thead>
     <tbody>
       <% @shifts.each do |shift| %>
@@ -56,6 +37,7 @@
           <td><%= shift.user.full_name %></td>
           <td><%= shift.pretty_date %></td>
           <td><%= shift.pretty_time %></td>
+          <td><%= button_to "Delete", shift, method: :delete, class: "btn btn-default btn-sm" %>
         </tr>
       <% end %>
     </tbody>

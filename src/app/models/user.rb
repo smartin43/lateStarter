@@ -12,7 +12,11 @@ class User < ActiveRecord::Base
 
   def week_shifts
     shifts = Shift.where("start_time >= ? AND start_time <= ? AND user_id == ?", Date.today.beginning_of_week, Date.today.end_of_week, self.id)
-    #shifts = Shift.where(start_time: Date.today.beginning_of_week..Date.today.end_of_week).where(:user == self)
-    shifts
+    arr = ["-","-","-","-","-","-","-"]
+    shifts.each do |shift|
+      arr.insert_at((DateTime.strptime(shift.start_time,"%m/%d/%Y %H:%M %p")).wday, shift.pretty_time)
+    end
+    arr
+    #return shifts
   end
 end

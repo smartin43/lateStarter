@@ -19,7 +19,25 @@ class ShiftsController < ApplicationController
     end
   end
 
+  def remove_shift
+    Shift.find(params[:format]).destroy
+    redirect_to :back
+  end
+
+  def destroy
+    set_shift
+    @shift.destroy
+    redirect_to :back
+  end
+
+  def edit
+    set_shift
+  end
+
   private
+    def set_shift
+      @shift = Shift.find(params[:id])
+    end
     def shift_params
       params.require(:shift).permit(:user_id, :start_time, :end_time)
     end
