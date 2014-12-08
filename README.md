@@ -1,4 +1,5 @@
 #lateStarters
+[Home Repo](https://github.com/CSUChicoSoftwareEngineering/lateStarter)
 
 ##Repo info
 The directory structure is that of a typical Ruby on Rails application.
