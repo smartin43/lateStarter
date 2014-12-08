@@ -1,4 +1,5 @@
 class ShiftsController < ApplicationController
+  before_action :set_shift, only: [:edit, :update, :destroy]
   before_action :check_for_user
 
   def index
@@ -25,13 +26,16 @@ class ShiftsController < ApplicationController
   end
 
   def destroy
-    set_shift
     @shift.destroy
     redirect_to :back
   end
 
   def edit
-    set_shift
+  end
+  
+  def update
+    @shift.update(shift_params)
+    redirect_to master_schedule_path
   end
 
   private

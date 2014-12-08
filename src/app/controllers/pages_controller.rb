@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def master_schedule
-    @shifts = Shift.all
+    @shifts = Shift.all.order(start_time: :asc)
     @users = User.all
   end
   
